@@ -17,6 +17,10 @@ app.all("/about", (request, response)=>{
 app.all("/works", (request,response)=>{
     response.sendFile(path.join(__dirname, "views", "works.html"))
 })
+
+app.all("/gallery", (request, response) =>{
+    response.sendFile(path.join(__dirname, "views", "gallery.html"))
+})
 app.listen(3000, ()=>{
     console.log("App running")
 })
