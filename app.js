@@ -1,26 +1,33 @@
 const express = require("express");
+const hbs = require("hbs")
+
 const path = require("path");
 
 const app = express()
 
 app.use(express.static(path.join(__dirname, "public")))
 
+app.set("view engine", "hbs")
+app.set("views", path.join(__dirname, "/views"))
+
+
+
 app.all("/home", (request, response)=>{
-    response.sendFile(path.join(__dirname, "views", "home.html"))
+    response.render("home")
 
 })
 app.all("/about", (request, response)=>{
-    response.sendFile(path.join(__dirname, "views", "about.html"))
+    response.render("about")
     
 })
 
 app.all("/works", (request,response)=>{
-    response.sendFile(path.join(__dirname, "views", "works.html"))
+    response.render("works")
 })
 
 app.all("/gallery", (request, response) =>{
-    response.sendFile(path.join(__dirname, "views", "gallery.html"))
+    response.render("gallery")
 })
-app.listen(3000, ()=>{
+app.listen(4000, ()=>{
     console.log("App running")
 })
